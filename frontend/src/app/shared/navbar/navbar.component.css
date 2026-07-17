@@ -1,0 +1,12 @@
+.spacer {
+    flex: 1 1 auto;
+  }
+  
+  .app-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  
+  button {
+    margin-left: 8px;
+  }

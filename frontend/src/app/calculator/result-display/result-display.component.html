@@ -1,0 +1,80 @@
+@if (result) {
+    <div class="results-grid">
+      <div class="result-item">
+        <div class="result-label">Pressure at toolstring (psia)</div>
+        <div class="result-value">{{ result.pressureAtToolstring | number:'1.2-2' }}</div>
+      </div>
+  
+      <div class="result-item">
+        <div class="result-label">Surface water flowrate (bwpd)</div>
+        <div class="result-value">{{ result.surfaceWaterFlowrate | number:'1.2-2' }}</div>
+      </div>
+  
+      <div class="result-item">
+        <div class="result-label">Net Force on Wire (lbs)</div>
+        <div class="result-value">{{ result.netForceOnWire | number:'1.2-2' }}</div>
+      </div>
+  
+      <div class="result-item">
+        <div class="result-label">Downhole Density Gas (g/cc)</div>
+        <div class="result-value">{{ result.downholeDensityGas | number:'1.4-4' }}</div>
+      </div>
+  
+      <div class="result-item">
+        <div class="result-label">Net Force of Toolstring (lbs)</div>
+        <div class="result-value">{{ result.netForceOfToolstring | number:'1.2-2' }}</div>
+      </div>
+  
+      <div class="result-item">
+        <div class="result-label">Net Force of System (lbs)</div>
+        <div class="result-value">{{ result.netForceOfSystem | number:'1.2-2' }}</div>
+      </div>
+  
+      <div class="result-item">
+        <div class="result-label">Line weight deviated less buoyancy (lbs)</div>
+        <div class="result-value">{{ result.lineWeightDeviatedLessBuoyancy | number:'1.2-2' }}</div>
+      </div>
+  
+      <div class="result-item">
+        <div class="result-label">Tool weight deviated less buoyancy (lbs)</div>
+        <div class="result-value">{{ result.toolWeightDeviatedLessBuoyancy | number:'1.2-2' }}</div>
+      </div>
+  
+      <div class="result-item">
+        <div class="result-label">Line pull at surface (lbs)</div>
+        <div class="result-value">{{ result.linePullAtSurface | number:'1.2-2' }}</div>
+      </div>
+  
+      <div class="result-item">
+        <div class="result-label">Wellhead Press (lbs)</div>
+        <div class="result-value">{{ result.wellheadPress | number:'1.2-2' }}</div>
+      </div>
+  
+      <div class="result-item">
+        <div class="result-label">Press control friction (lbs)</div>
+        <div class="result-value">{{ result.pressControlFriction | number:'1.2-2' }}</div>
+      </div>
+  
+      <div class="result-item">
+        <div class="result-label">{{ getForceType(result.lineForce) }} on line (lbs)</div>
+        <div class="result-value">{{ result.lineForce | number:'1.2-2' }}</div>
+      </div>
+  
+      <div class="result-item">
+        <div class="result-label">{{ getForceType(result.toolForce) }} on tools (lbs)</div>
+        <div class="result-value">{{ result.toolForce | number:'1.2-2' }}</div>
+      </div>
+  
+      <div class="result-item">
+        <div class="result-label">Positive (Downward) Forces (lbs)</div>
+        <div class="result-value">{{ result.positiveDownwardForces | number:'1.2-2' }}</div>
+      </div>
+  
+      <div class="result-item">
+        <div class="result-label">Counter Forces (lbs)</div>
+        <div class="result-value">{{ result.counterForces | number:'1.2-2' }}</div>
+      </div>
+    </div>
+  } @else {
+    <div class="no-results">No calculation results to display</div>
+  }

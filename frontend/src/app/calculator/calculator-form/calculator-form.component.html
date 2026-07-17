@@ -1,0 +1,195 @@
+<div class="calculator-container">
+    <h1>Oil Well Calculator</h1>
+  
+    <div class="form-actions-top">
+      <button mat-raised-button color="primary" (click)="loadSampleData()">Load Sample Data</button>
+      <button mat-stroked-button color="warn" (click)="clearForm()">Clear Form</button>
+    </div>
+  
+    <div class="calculator-form-container">
+      <mat-card>
+        <mat-card-content>
+          <form [formGroup]="calculatorForm" (ngSubmit)="calculate()">
+            <div class="input-grid">
+              <!-- First Column -->
+              <div class="input-column">
+                <mat-form-field appearance="outline">
+                  <mat-label>Toolstring Depth (ft)</mat-label>
+                  <input matInput type="number" step="0.01" formControlName="toolstringDepth">
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline">
+                  <mat-label>PLT Tool Length (ft)</mat-label>
+                  <input matInput type="number" step="0.01" formControlName="pltToolLength">
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline">
+                  <mat-label>Line wt/1000ft in air (lbs)</mat-label>
+                  <input matInput type="number" step="0.01" formControlName="lineWtPer1000ft">
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline">
+                  <mat-label>Well Deviation (degrees)</mat-label>
+                  <input matInput type="number" step="0.01" formControlName="wellDeviation">
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline">
+                  <mat-label>Wireline OD (ins)</mat-label>
+                  <input matInput type="number" step="0.001" formControlName="wirelineOd">
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline">
+                  <mat-label>Surface gas flowrate (mscfd)</mat-label>
+                  <input matInput type="number" step="0.0001" formControlName="surfaceGasFlowrate">
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline">
+                  <mat-label>Surface oil flowrate (bopd)</mat-label>
+                  <input matInput type="number" step="0.01" formControlName="surfaceOilFlowrate">
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline">
+                  <mat-label>Oil Soln. GOR at Pwf. (scf/bbl)</mat-label>
+                  <input matInput type="number" step="0.01" formControlName="oilSolnGor">
+                </mat-form-field>
+              </div>
+  
+              <!-- Second Column -->
+              <div class="input-column">
+                <mat-form-field appearance="outline">
+                  <mat-label>Downhole Temperature (Degree F)</mat-label>
+                  <input matInput type="number" step="0.01" formControlName="downholeTemp">
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline">
+                  <mat-label>Gas Specific Gravity (Air = 1)</mat-label>
+                  <input matInput type="number" step="0.01" formControlName="gasSpecificGravity">
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline">
+                  <mat-label>Surface pressure (psia)</mat-label>
+                  <input matInput type="number" step="0.01" formControlName="surfacePressure">
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline">
+                  <mat-label>Bo, Formn. Vol. factor oil (RB/STB)</mat-label>
+                  <input matInput type="number" step="0.01" formControlName="bo">
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline">
+                  <mat-label>Calc. D/Hole Density oil (g/cc)</mat-label>
+                  <input matInput type="number" step="0.001" formControlName="calcDholeDensityOil">
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline">
+                  <mat-label>Downhole density water (g/cc)</mat-label>
+                  <input matInput type="number" step="0.01" formControlName="downholeDensityWater">
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline">
+                  <mat-label>Surface pull on line (lbs)</mat-label>
+                  <input matInput type="number" step="0.01" formControlName="surfacePull">
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline">
+                  <mat-label>Press control / wire friction (lbs)</mat-label>
+                  <input matInput type="number" step="0.01" formControlName="pressControlFriction">
+                </mat-form-field>
+              </div>
+  
+              <!-- Third Column -->
+              <div class="input-column">
+                <mat-form-field appearance="outline">
+                  <mat-label>Tubing ID (ins)</mat-label>
+                  <input matInput type="number" step="0.001" formControlName="tubingId">
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline">
+                  <mat-label>Line Friction Factor (constant)</mat-label>
+                  <input matInput type="number" step="0.001" formControlName="lineFrictionFactor">
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline">
+                  <mat-label>Tubing depth (ft)</mat-label>
+                  <input matInput type="number" step="0.01" formControlName="tubingDepth">
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline">
+                  <mat-label>Casing ID or next ID (ins)</mat-label>
+                  <input matInput type="number" step="0.001" formControlName="casingId">
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline">
+                  <mat-label>Toolstring wt in air (lbs)</mat-label>
+                  <input matInput type="number" step="0.01" formControlName="toolstringWt">
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline">
+                  <mat-label>Tool OD (ins)</mat-label>
+                  <input matInput type="number" step="0.001" formControlName="toolOd">
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline">
+                  <mat-label>Toolstring friction factors (constant)</mat-label>
+                  <input matInput type="number" step="0.001" formControlName="toolstringFriction">
+                </mat-form-field>
+              </div>
+            </div>
+  
+            <div class="form-actions">
+              <button 
+                mat-raised-button 
+                color="primary" 
+                type="submit" 
+                [disabled]="calculatorForm.invalid || loading">
+                {{ loading ? 'Calculating...' : 'Calculate' }}
+              </button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  
+    @if (calculationResult) {
+      <div class="result-container">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Calculation Results</mat-card-title>
+          </mat-card-header>
+  
+          <mat-card-content>
+            <app-result-display [result]="calculationResult"></app-result-display>
+  
+            @if (showSaveForm) {
+              <mat-divider class="divider"></mat-divider>
+              
+              <div class="save-form">
+                <h3>Save this calculation</h3>
+                <form [formGroup]="saveForm" (ngSubmit)="saveCalculation()">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name">
+                  </mat-form-field>
+  
+                  <mat-form-field appearance="outline">
+                    <mat-label>Description (optional)</mat-label>
+                    <textarea matInput formControlName="description" rows="3"></textarea>
+                  </mat-form-field>
+  
+                  <div class="form-actions">
+                    <button 
+                      mat-raised-button 
+                      color="primary" 
+                      type="submit" 
+                      [disabled]="saveForm.invalid || loading">
+                      {{ loading ? 'Saving...' : 'Save Calculation' }}
+                    </button>
+                  </div>
+                </form>
+              </div>
+            }
+          </mat-card-content>
+        </mat-card>
+      </div>
+    }
+  </div>

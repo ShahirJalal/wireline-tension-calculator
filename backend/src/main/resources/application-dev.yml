@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/oilDB
+    username: postgres
+    password: shahirdb
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    show-sql: true
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    com.oilcalc: DEBUG

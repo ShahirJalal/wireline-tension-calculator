@@ -1,0 +1,63 @@
+<div class="detail-container">
+    <div class="actions-bar">
+      <button mat-stroked-button (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon> Back to History
+      </button>
+      
+      @if (calculation) {
+        <button mat-stroked-button color="warn" (click)="deleteCalculation()">
+          <mat-icon>delete</mat-icon> Delete
+        </button>
+      }
+    </div>
+  
+    @if (loading) {
+      <div class="loading-message">Loading calculation details...</div>
+    } @else if (calculation) {
+      <mat-card class="detail-card">
+        <mat-card-header>
+          <mat-card-title>{{ calculation.name }}</mat-card-title>
+          <mat-card-subtitle>Created on {{ formatDate(calculation.createdAt) }}</mat-card-subtitle>
+        </mat-card-header>
+        
+        <mat-card-content>
+          @if (calculation.description) {
+            <div class="description">
+              <h3>Description</h3>
+              <p>{{ calculation.description }}</p>
+            </div>
+            <mat-divider></mat-divider>
+          }
+  
+          <div class="result-section">
+            <h3>Results</h3>
+            @if (calculation.result) {
+              <app-result-display [result]="calculation.result"></app-result-display>
+            } @else {
+              <p>No result data available</p>
+            }
+          </div>
+          
+          <mat-divider></mat-divider>
+          
+          <div class="input-section">
+            <h3>Input Values</h3>
+            @if (calculation.input) {
+              <div class="input-grid">
+                @for (item of getInputEntries(calculation.input); track item[0]) {
+                  <div class="input-item">
+                    <div class="input-label">{{ formatInputLabel(item[0]) }}</div>
+                    <div class="input-value">{{ item[1] }}</div>
+                  </div>
+                }
+              </div>
+            } @else {
+              <p>No input data available</p>
+            }
+          </div>
+        </mat-card-content>
+      </mat-card>
+    } @else {
+      <div class="error-message">Calculation not found</div>
+    }
+  </div>

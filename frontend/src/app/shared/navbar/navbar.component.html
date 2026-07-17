@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+    <span class="app-title">PetroPulse</span>
+    
+    <span class="spacer"></span>
+    
+    @if (authService.isAuthenticated()) {
+      <button mat-button routerLink="/calculator">Calculator</button>
+      <button mat-button routerLink="/history">History</button>
+      <button mat-button (click)="logout()">Logout</button>
+    } @else {
+      <button mat-button routerLink="/login">Login</button>
+      <button mat-button routerLink="/register">Register</button>
+    }
+  </mat-toolbar>

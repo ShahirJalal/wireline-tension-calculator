@@ -1,0 +1,42 @@
+.history-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .calculation-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .calculation-card {
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .calculation-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .loading-message, .empty-message {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+  }
+  
+  .empty-message button {
+    margin-top: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .calculation-list {
+      grid-template-columns: 1fr;
+    }
+  }

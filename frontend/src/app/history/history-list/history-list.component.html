@@ -1,0 +1,41 @@
+<div class="history-container">
+    <h1>Calculation History</h1>
+  
+    @if (loading) {
+      <div class="loading-message">Loading calculations...</div>
+    } @else if (calculations.length === 0) {
+      <div class="empty-message">
+        <p>You haven't saved any calculations yet.</p>
+        <button mat-raised-button color="primary" routerLink="/calculator">
+          Create a Calculation
+        </button>
+      </div>
+    } @else {
+      <div class="calculation-list">
+        @for (calculation of calculations; track calculation.id) {
+          <mat-card class="calculation-card" (click)="viewCalculation(calculation.id)">
+            <mat-card-header>
+              <mat-card-title>{{ calculation.name }}</mat-card-title>
+              <mat-card-subtitle>{{ formatDate(calculation.createdAt) }}</mat-card-subtitle>
+            </mat-card-header>
+            
+            <mat-card-content>
+              @if (calculation.description) {
+                <p>{{ calculation.description }}</p>
+              }
+            </mat-card-content>
+            
+            <mat-card-actions align="end">
+              <button 
+                mat-icon-button 
+                color="warn" 
+                (click)="deleteCalculation(calculation.id, $event)"
+                title="Delete calculation">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        }
+      </div>
+    }
+  </div>
