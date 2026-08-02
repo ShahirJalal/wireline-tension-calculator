@@ -83,7 +83,9 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList(
                 "https://petro-pulse-6424fb0974b2.herokuapp.com",
-                "http://localhost:4200"
+                "https://wireline.shahirjalal.com",
+                "http://localhost:4200",
+                "http://localhost:4201"
         ));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "X-Auth-Token"));

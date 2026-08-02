@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/calculations")
+@RequestMapping("/calculations")
 @CrossOrigin
 public class CalculationController {
 
