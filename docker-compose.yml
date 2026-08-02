@@ -8,7 +8,7 @@ services:
     environment:
       POSTGRES_DB: wireline
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: shahirdb
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 
     volumes:
       - wireline-postgres-data:/var/lib/postgresql/data
@@ -36,7 +36,8 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/wireline
       SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: shahirdb
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
 
     ports:
       - "8082:8081"
