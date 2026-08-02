@@ -1,21 +1,25 @@
 spring:
-  profiles:
-    active: dev
   application:
     name: backend
 
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/oilDB}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:shahirdb}
+    driver-class-name: org.postgresql.Driver
+
   jpa:
     open-in-view: false
+    show-sql: false
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
-        show_sql: false
 
 server:
-  port: 8081
+  port: ${SERVER_PORT:8081}
   servlet:
     context-path: /api
 
@@ -23,3 +27,8 @@ server:
 jwt:
   secret: ${JWT_SECRET:secureJwtSecretKeyForOilCalcBackendApplicationMustBeVeryLongAndSecure}
   expiration: 86400000
+
+logging:
+  level:
+    root: INFO
+    com.oilcalc: INFO
